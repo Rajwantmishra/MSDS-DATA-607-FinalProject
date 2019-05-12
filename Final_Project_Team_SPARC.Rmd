@@ -28,6 +28,13 @@ All the project data sets, codes, and graphics are available under [Final Projec
 #### Rpub 
 
 The presentation is published on [Final Project](http://rpubs.com/greeneyefirefly/data607-FinalProject) Rpub.
+<b> [Naive Bayes Work](http://rpubs.com/Rajwantmishra/project5) </b>
+
+#### Recommender System
+
+[Shiny App](https://rajwantmishra.shinyapps.io/SymptomsDiseasesRecommendation/)
+
+
 
 #### Project Documentation 
 
