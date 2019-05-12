@@ -1,12 +1,3 @@
----
-output:
-  html_document:
-    keep_md: yes
-    theme: journal
-    toc: yes
-    toc_float: yes
----
-
 Medical Recommender System
 ===============================
 
@@ -100,7 +91,7 @@ Moreover, statistical inferences were performed to investigate the following:
 
 Data sets are retrieved from:
 
-Felix Gr‰ﬂer, Surya Kallumadi, Hagen Malberg, and Sebastian Zaunseder. 2018. Aspect-Based Sentiment Analysis of Drug Reviews Applying Cross-Domain and Cross-Data Learning. In Proceedings of the 2018 International Conference on Digital Health (DH '18). ACM, New York, NY, USA, 121-125. DOI: [https://doi.org/10.1145/3194658.3194677]
+Felix Gr√§√üer, Surya Kallumadi, Hagen Malberg, and Sebastian Zaunseder. 2018. Aspect-Based Sentiment Analysis of Drug Reviews Applying Cross-Domain and Cross-Data Learning. In Proceedings of the 2018 International Conference on Digital Health (DH '18). ACM, New York, NY, USA, 121-125. DOI: [https://doi.org/10.1145/3194658.3194677]
 
 * These data sets provide patient reviews on specific drugs along with related conditions. Reviews and ratings are grouped into reports on the three aspects benefits, side effects and overall comment.    
 
@@ -196,8 +187,12 @@ dbDisconnect(con2)
    <td style="text-align:left;"> Highly Effective </td>
    <td style="text-align:left;"> Mild Side Effects </td>
    <td style="text-align:left;"> management of congestive heart failure </td>
-   <td style="text-align:left;"> slowed the progression of left ventricular dysfunction into overt heart failure 
-alone or with other agents in the managment of hypertension 
+   <td style="text-align:left;"> slowed the progression of left ventricular dysfunction into overt heart failure 
+
+
+alone or with other agents in the managment of hypertension 
+
+
 mangagement of congestive heart failur </td>
    <td style="text-align:left;"> cough, hypotension , proteinuria, impotence , renal failure , angina pectoris , tachycardia , eosinophilic pneumonitis, tastes disturbances , anusease anorecia , weakness fatigue insominca weakness </td>
    <td style="text-align:left;"> monitor blood pressure , weight and asses for resolution of fluid </td>
@@ -889,7 +884,7 @@ Overall, it is apparent that an extremely effective drug does not mean a highly 
 
 ***
 
-Using the effectiveness and the side effects reviews from the Drug Reviews data, a sentimental analysis was done to identify the user's experiences with the specific drug. In this analysis, the lexicon AFINN words and associated ratings from Finn ≈rup Nielsen were used. Moreover, since the hypothesis testing found that some results would have an overall negative experience even though their drug ratings were very high, conditions were establish to reverse sentiment ratings if they are not accurate representations of the reviews. 
+Using the effectiveness and the side effects reviews from the Drug Reviews data, a sentimental analysis was done to identify the user's experiences with the specific drug. In this analysis, the lexicon AFINN words and associated ratings from Finn √Örup Nielsen were used. Moreover, since the hypothesis testing found that some results would have an overall negative experience even though their drug ratings were very high, conditions were establish to reverse sentiment ratings if they are not accurate representations of the reviews. 
 
 As a result, firstly, the reviews of drug benefits shows that there are more true (indicated in blue) positive sentiments for highly rated drugs than true negative sentiments for low rated drugs. However, the analysis did produced 15% of sentiments that are inaccurate representations of how the drug benefit review and drug rating are classified in this data set. That is, indicated in red, there are highly rated drugs with an overall negative sentiment score for their "benefits" reviews, and low rated drugs with positive "benefits" reviews.
 
