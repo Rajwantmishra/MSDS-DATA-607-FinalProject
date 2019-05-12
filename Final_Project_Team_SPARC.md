@@ -27,20 +27,16 @@ All the project data sets, codes, and graphics are available under [Final Projec
 
 #### Rpub 
 
-The presentation is published on [Final Project](http://rpubs.com/greeneyefirefly/data607-FinalProject) Rpub.
-<b> [Naive Bayes Work](http://rpubs.com/Rajwantmishra/project5) </b>
+The presentation is published on [Final Project](http://rpubs.com/greeneyefirefly/data607-FinalProject) Rpub.<br>
+[Naive Bayes Work](http://rpubs.com/Rajwantmishra/project5) 
 
 #### Recommender System
 
 [Shiny App](https://rajwantmishra.shinyapps.io/SymptomsDiseasesRecommendation/)
 
-
-
 #### Project Documentation 
 
 All the project work and ideas were documented and available under [Project Documentation](https://github.com/greeneyefirefly/MSDS-DATA-607-FinalProject) on Github.
-
-
 
 ***
 
@@ -51,6 +47,40 @@ According to the World Health Organization, more than 42% medication errors are 
 #### Limitations
 
 Team SPARC is aware that this recommendation system will not be quite accurate since we are not specialist to say one medicine can indeed be recommended instead of another, nor can an performance test be conducted at this time. In addition, there is the limitation on data avabliable, for instance, there is no patient information, true diagnosis, cost of medicine, the insurance company that covers the specific type of drug, etc since these are not easily obtainable. Therefore, our model is thought as a basis in the right direction, and with more data, the better the recommendation can become.
+
+#### R Packages
+
+
+```r
+library(tidyverse)
+library(rpart)
+library(rpart.plot)
+library(caret)
+library(kableExtra)
+library(tidytext)
+library(sentimentr)
+library(SnowballC)
+library(lattice)
+library(FSA)
+library(DT)
+library(lubridate)
+library(corrr)
+library(corrplot)
+library(psych)
+library(rcompanion)
+library(multcompView)
+library(readxl)
+library(plotly)
+library(lme4)
+library(lmerTest)
+library(tm)
+library(e1071)
+library(gmodels)
+library(mongolite)
+library(gridExtra)
+library(RMySQL)
+```
+
 
 ***
 ### Methodology   
@@ -70,11 +100,11 @@ Moreover, statistical inferences were performed to investigate the following:
 
 Data sets are retrieved from:
 
-Felix Gräßer, Surya Kallumadi, Hagen Malberg, and Sebastian Zaunseder. 2018. Aspect-Based Sentiment Analysis of Drug Reviews Applying Cross-Domain and Cross-Data Learning. In Proceedings of the 2018 International Conference on Digital Health (DH '18). ACM, New York, NY, USA, 121-125. DOI: [https://doi.org/10.1145/3194658.3194677]
+Felix Gr��er, Surya Kallumadi, Hagen Malberg, and Sebastian Zaunseder. 2018. Aspect-Based Sentiment Analysis of Drug Reviews Applying Cross-Domain and Cross-Data Learning. In Proceedings of the 2018 International Conference on Digital Health (DH '18). ACM, New York, NY, USA, 121-125. DOI: [https://doi.org/10.1145/3194658.3194677]
 
 * These data sets provide patient reviews on specific drugs along with related conditions. Reviews and ratings are grouped into reports on the three aspects benefits, side effects and overall comment.    
 
-Beata Strack, Jonathan P. DeShazo, Chris Gennings, Juan L. Olmo, Sebastian Ventura, Krzysztof J. Cios, and John N. Clore, “Impact of HbA1c Measurement on Hospital Readmission Rates: Analysis of 70,000 Clinical Database Patient Records,” BioMed Research International, vol. 2014, Article ID 781670, 11 pages, 2014.
+Beata Strack, Jonathan P. DeShazo, Chris Gennings, Juan L. Olmo, Sebastian Ventura, Krzysztof J. Cios, and John N. Clore, "Impact of HbA1c Measurement on Hospital Readmission Rates: Analysis of 70,000 Clinical Database Patient Records," BioMed Research International, vol. 2014, Article ID 781670, 11 pages, 2014.
 
 * This data set represents 10 years (1999-2008) of clinical care at 130 US hospitals and integrated delivery networks. It includes over 50 features representing patient and hospital outcomes such as inpatient encounter (a hospital admission), diabetic encounter, length of stay, race, gender, age, admission type, time in hospital, medical specialty of admitting physician, number of lab test performed, HbA1c test result, diagnosis, number of medication, diabetic medications, number of outpatient, inpatient, and emergency visits in the year before the hospitalization, etc.  
 
@@ -617,19 +647,19 @@ mangagement of congestive heart failur </td>
   
 > Plotting drug effectiveness
 
-![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 > Plotting drug side effects for effectiveness
 
-![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 > Drug effectiveness vs Patient Rating
 
-![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-7-1.png)<!-- -->![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-7-2.png)<!-- -->
+![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-8-1.png)<!-- -->![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-8-2.png)<!-- -->
 
 > Distribution of patient ratings
 
-![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
 
 
 ```r
@@ -647,9 +677,9 @@ head(Drugs_summary)
 ## 6             aciphex  6 8.833 1.602   6 8.25    9.5 10.00  10
 ```
 
-![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
-Given a patient claim that a drug is ‘Extremely Effective’, with a 95% confidence calculate the probability of a drug having ‘No SideEffect’
+Given a patient claim that a drug is 'Extremely Effective', with a 95% confidence calculate the probability of a drug having 'No SideEffect'
  
 
 ```r
@@ -669,13 +699,11 @@ c(CILower, CIUpper)
 ## [1] 0.3750536 0.4210406
 ```
 
-Thus, with 95% confidence, it can be confirmed that given a drug is rated ‘Extremely Effective’, the probability of drug having ‘No Side Effect’ between 0.3750536 and 0.4210406
+Thus, with 95% confidence, it can be confirmed that given a drug is rated 'Extremely Effective', the probability of drug having 'No Side Effect' between 0.3750536 and 0.4210406
 
 </details>
 
 In the Drug Review data set, there are different ratings provided by the patients for each drug based on the experiences they have with it. Patient can assign the drug effectiveiness varying from 'Ineffective' to 'Highly Effective', the side effects from 'No Side effects' to 'Extremely Severe Side Effects' and a rating from 1 to 10. After performing exploratory data analysis to obtain insights about the data on patient rating, effectiveness and side effects distributions, the histograms and QQ plots revealed that the variables do not follow a normal distribution. Therefore, the hypothesis of whether or not an extremely effective drug means a high rated drug will be tested through the Kruskal-Wallis H test.
-
-> Kruskal-Wallis Test
 
 Kruskal-Wallis is a rank-based nonparametric test that can be used to determine if there are statistically significant differences between two or more groups of an independent variable on a continuous or ordinal dependent variable. It is considered the nonparametric alternative to the one-way ANOVA, and an extension of the Mann-Whitney U test to allow the comparison of more than two independent groups. 
 
@@ -701,7 +729,7 @@ From the above, since the p-value is less than 0.05, the null hypothesis can be 
 
 > Dunn Test for Multiple Comparisons 
 
-Since the Kruskal–Wallis test is significant, two post-hoc analyses were performed to determine which levels of the independent variable differ from each other level. Probably the most popular test for this is the Dunn test, which is performed with the `dunnTest` function in the FSA package Adjustments to the p-values could be made using the method option to control the familywise error rate or to control the false discovery rate. 
+Since the Kruskal-Wallis test is significant, two post-hoc analyses were performed to determine which levels of the independent variable differ from each other level. Probably the most popular test for this is the Dunn test, which is performed with the `dunnTest` function in the FSA package Adjustments to the p-values could be made using the method option to control the familywise error rate or to control the false discovery rate. 
 
 The Dunn test is appropriate for groups with unequal numbers of observations.
 
@@ -765,9 +793,9 @@ cldList(comparison = drug.dunn$Comparison, p.value = drug.dunn$P.adj, threshold 
 
 As we see, all the 5 levels of effectiveness have different letters, therefore, they are significant and independent of each other.
 
-> Pairwise Mann–Whitney U-tests 
+> Pairwise Mann-Whitney U-tests 
 
-Another post-hoc approach is to use Pairwise Mann–Whitney U-tests. Mann–Whitney U-tests is also called the Wilcoxon Rank-Sum Test. It is use to calculate pairwise comparisons between group levels with corrections for multiple testing. In order to prevent the inflation of Type I error rates, adjustments to the p-values can be made using the `p.adjust.method` option to control the familywise error rate or to control the false discovery rate.
+Another post-hoc approach is to use Pairwise Mann-Whitney U-tests. Mann-Whitney U-tests is also called the Wilcoxon Rank-Sum Test. It is use to calculate pairwise comparisons between group levels with corrections for multiple testing. In order to prevent the inflation of Type I error rates, adjustments to the p-values can be made using the `p.adjust.method` option to control the familywise error rate or to control the false discovery rate.
 
 If there are several values to compare, it can be beneficial to have R convert this table to a compact letter display for you. The multcompLetters function in the multcompView package can do this, but first the table of p-values must be converted to a full table.
 
@@ -861,9 +889,9 @@ Overall, it is apparent that an extremely effective drug does not mean a highly 
 
 ***
 
-Using the effectiveness and the side effects reviews from the Drug Reviews data, a sentimental analysis was done to identify the user's experiences with the specific drug. In this analysis, the lexicon AFINN words and associated ratings from Finn Årup Nielsen were used. Moreover, since the hypothesis testing found that some results would have an overall negative experience even though their drug ratings were very high, conditions were establish to reverse sentiment ratings if they are not accurate representations of the reviews. This will be statistically tested later after examination of the reviews.
+Using the effectiveness and the side effects reviews from the Drug Reviews data, a sentimental analysis was done to identify the user's experiences with the specific drug. In this analysis, the lexicon AFINN words and associated ratings from Finn �rup Nielsen were used. Moreover, since the hypothesis testing found that some results would have an overall negative experience even though their drug ratings were very high, conditions were establish to reverse sentiment ratings if they are not accurate representations of the reviews. 
 
-As a result, firstly, the review of drug benefits shows that there are more true positive sentiments for highly rated drugs than low rated. However, the analysis did produced 15% of sentiment that are inaccurate representations of how the drug benefit review and drug rating are classified in this data set. 
+As a result, firstly, the reviews of drug benefits shows that there are more true (indicated in blue) positive sentiments for highly rated drugs than true negative sentiments for low rated drugs. However, the analysis did produced 15% of sentiments that are inaccurate representations of how the drug benefit review and drug rating are classified in this data set. That is, indicated in red, there are highly rated drugs with an overall negative sentiment score for their "benefits" reviews, and low rated drugs with positive "benefits" reviews.
 
 <details>
   <summary> *Drug Benefit Reviews* </summary>
@@ -895,9 +923,9 @@ x_mid = 5
 ```
 </details>
 
-![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
 
-Secondly, the review of drug side effect review shows that there are also more true positive sentiments for highly rated drugs than low rated. In this case, the analysis did produced 18% of sentiment that are inaccurate representations of how the drug side effect reviews and drug rating are classified in this data set. 
+Secondly, the review of drug side effect review shows that there are also more true positive sentiments for highly rated drugs than true negative sentiments for low rated drugs. Moreover, the analysis did produced 18% of sentiment that are inaccurate representations of how the drug side effect reviews and drug rating are classified in this data set. That is, there are highly rated drugs with an overall negative sentiment score for their "side effect" reviews, and low rated drugs with positive "side effect" reviews.
 
 <details>
   <summary> *Side Effect Reviews* </summary>
@@ -926,7 +954,7 @@ review_summary <- reviews.afinn %>%
 ```
 </details>
 
-![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
+![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
 
 
 ***
@@ -1033,7 +1061,7 @@ rpart.rules(rtree_fit2, cover = TRUE)
 
 > Measuring the prediction fit of the analysis
 
-In the both example, approximately 46% of training cases are changes in medication. The first example had the splitting criteria of “time spent in hospital”, which separates the data into a set of nine cases, while in the second example, the splitting criteria was “patient A1c result”, which separates the data into a set of eight cases. Moreover, the graphs show what is the optimal level for the decision tree. Thus, pruning can be done with the appropriate complexity parameter (cp) of 0.0016 and 0.0048, respectively.
+In the both example, approximately 46% of training cases are changes in medication. The first example had the splitting criteria of "time spent in hospital", which separates the data into a set of nine cases, while in the second example, the splitting criteria was "patient A1c result", which separates the data into a set of eight cases. Moreover, the graphs show what is the optimal level for the decision tree. Thus, pruning can be done with the appropriate complexity parameter (cp) of 0.0016 and 0.0048, respectively.
 
 
 ```r
@@ -1069,7 +1097,7 @@ printcp(rtree_fit1)
 plotcp(rtree_fit1, lty = 3, col = 1)
 ```
 
-![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-27-1.png)<!-- -->
+![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
 
 ```r
 rtree_fit1 <- prune(rtree_fit1, cp = 0.0016)
@@ -1112,7 +1140,7 @@ printcp(rtree_fit2)
 plotcp(rtree_fit2, lty = 3, col = 1)
 ```
 
-![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-29-1.png)<!-- -->
+![](Final_Project_Team_SPARC_files/figure-html/unnamed-chunk-30-1.png)<!-- -->
 
 ```r
 rtree_fit2 <- prune(rtree_fit2, cp = 0.0048)
@@ -1123,7 +1151,7 @@ rtree_fit2 <- prune(rtree_fit2, cp = 0.0048)
 ***
 #### Naive Bayesian Classifier 
 
-Naive Bayes classifiers are a collection of classification algorithms based on Bayes’ Theorem. It is not a single algorithm but a family of algorithms where all of them share a common principle, i.e. every pair of features being classified is independent of each other. It assumes there is no dependency between the predictors. 
+Naive Bayes classifiers are a collection of classification algorithms based on Bayes' Theorem. It is not a single algorithm but a family of algorithms where all of them share a common principle, i.e. every pair of features being classified is independent of each other. It assumes there is no dependency between the predictors. 
 
 Naive Bayesian classifiers have several advantages:
 
@@ -1270,7 +1298,7 @@ Advantages of Classification Algorithms
 
 Disadvantages of Classification Algorithms
 
-* It’s assumption, class conditional independence else loss of accuracy
+* It's assumption, class conditional independence else loss of accuracy
 * If you have no occurrences of a class label and a certain attribute value togetherthen the frequency-based probability estimate will be zero
 
 
@@ -1318,9 +1346,9 @@ fs_model$download("Nav_model.rds","mongo/MongoNav.rds")
 ***
 ### Works Cited
 
-* Beata Strack, Jonathan P. DeShazo, Chris Gennings, Juan L. Olmo, Sebastian Ventura, Krzysztof J. Cios, and John N. Clore, “Impact of HbA1c Measurement on Hospital Readmission Rates: Analysis of 70,000 Clinical Database Patient Records,” BioMed Research International, vol. 2014, Article ID 781670, 11 pages, 2014. 
+* Beata Strack, Jonathan P. DeShazo, Chris Gennings, Juan L. Olmo, Sebastian Ventura, Krzysztof J. Cios, and John N. Clore, "Impact of HbA1c Measurement on Hospital Readmission Rates: Analysis of 70,000 Clinical Database Patient Records," BioMed Research International, vol. 2014, Article ID 781670, 11 pages, 2014. 
 
-* Dima, Shinechimeg et al. “Decision Tree Approach to the Impact of Parents' Oral Health on Dental Caries Experience in Children: A Cross-Sectional Study.” International journal of environmental research and public health vol. 15,4 692. 6 Apr. 2018, doi:10.3390/ijerph15040692
+* Dima, Shinechimeg et al. "Decision Tree Approach to the Impact of Parents' Oral Health on Dental Caries Experience in Children: A Cross-Sectional Study." International journal of environmental research and public health vol. 15,4 692. 6 Apr. 2018, doi:10.3390/ijerph15040692
 
 * Dua, D. and Graff, C. (2019). [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.
 
@@ -1332,6 +1360,6 @@ fs_model$download("Nav_model.rds","mongo/MongoNav.rds")
 
 * Liske, Debbie. [Tidy Sentiment Analysis in R.](https://www.datacamp.com/community/tutorials/sentiment-analysis-R). March 29, 2018. Accessed on May 1, 2019.
 
-* Podgorelec V., Kokol P., Stiglic B., Rozman I. Decision trees: An overview and their use in medicine. J. Med. Syst. 2002;26:445–463. doi: 10.1023/A:1016409317640.
+* Podgorelec V., Kokol P., Stiglic B., Rozman I. Decision trees: An overview and their use in medicine. J. Med. Syst. 2002;26:445-463. doi: 10.1023/A:1016409317640.
 
 * Therneau, Terry M., Atkinson,Elizabeth J. ["An Introduction to Recursive Partitioning. Using the RPART Routines"](https://cran.r-project.org/web/packages/rpart/vignettes/longintro.pdf) Mayo Foundation. April 11, 2019
