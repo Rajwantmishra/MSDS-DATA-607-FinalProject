@@ -1,10 +1,10 @@
 ---
 output:
   html_document:
+    keep_md: yes
     theme: journal
-    toc: TRUE
-    toc_float: TRUE  
-    toc_depth: 3
+    toc: yes
+    toc_float: yes
 ---
 
 Medical Recommender System
@@ -170,12 +170,12 @@ dbDisconnect(con2)
 > Drug Review Data Set
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
-train <- read_tsv("drugLibTrain_raw.tsv", col_names = TRUE, cols(
+train <- read_tsv("Datasets/drugLibTrain_raw.tsv", col_names = TRUE, cols(
   X1 = col_double(),  urlDrugName = col_character(),  rating = col_double(),  effectiveness = col_factor(),  sideEffects = col_factor(),  condition = col_factor(),
   benefitsReview = col_character(),  sideEffectsReview = col_character(),  commentsReview = col_character()
 ))
 
-test <- read_tsv("drugLibTest_raw.tsv", col_names = TRUE, cols(
+test <- read_tsv("Datasets/drugLibTest_raw.tsv", col_names = TRUE, cols(
   X1 = col_double(),  urlDrugName = col_character(),  rating = col_double(),  effectiveness = col_factor(),  sideEffects = col_factor(),  condition = col_factor(),
   benefitsReview = col_character(),  sideEffectsReview = col_character(),  commentsReview = col_character()
 ))
@@ -195,7 +195,7 @@ kable(head(dataset)) %>%
 > Diabetes Data Set
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
-diabetes <- read_csv("diabetic_data.csv")
+diabetes <- read_csv("Datasets/diabetic_data.csv")
 
 kable(head(diabetes)) %>%
   kable_styling() %>%
