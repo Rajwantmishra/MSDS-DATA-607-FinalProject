@@ -1,0 +1,13 @@
+name: SymptomsDiseasesRecommendation
+title: SymptomsDiseasesRecommendation
+username:
+account: rajwantmishra
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 908658
+bundleId: 2076628
+url: https://rajwantmishra.shinyapps.io/SymptomsDiseasesRecommendation/
+when: 1557552429.2515
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: New Text Document (2).txt
